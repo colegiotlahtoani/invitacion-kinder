@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOCAL HOST</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Librería AOS para animaciones -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css">
+
+    <!-- Metaetiquetas para compartir en redes sociales -->
+    <meta property="og:title" content="Invitación al Festival Navideño 🎄">
+    <meta property="og:description" content="¡Acompáñanos al Festival Navideño del Colegio Tlahtoani! Haz clic aquí para más detalles y confirmar tu asistencia.">
+    <meta property="og:image" content="https://i.postimg.cc/QtmFPrP6/imagen-etiqueta.png">
+    <meta property="og:url" content="https://colegiotlahtoani.github.io/invitacion-navidad/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        /* Ajuste de texto consistente entre dispositivos */
+        html {
+            font-size: 16px; /* Tamaño base uniforme */
+        }
+
+        body {
+            font-size: 1rem; /* Relativo al tamaño base */
+            -webkit-text-size-adjust: 100%; /* Para iOS */
+            text-size-adjust: 100%; /* Para otros navegadores */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        /* Escalado opcional para pantallas pequeñas */
+        @media (max-width: 768px) {
+            html {
+                font-size: 16px; /* Mantén el tamaño base en pantallas medianas */
+            }
+        }
+
+        @media (max-width: 480px) {
+            html {
+                font-size: 16px; /* Igual para pantallas pequeñas */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero fade-in" 
+        data-aos="fade-down" 
+        data-aos-duration="1000"
+        style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px 5px; text-align: center;">
+        <img src="logo_festival.png" alt="Logo Tlahtoani" class="logo" style="width: 200px; margin-bottom: 2px;"> <!-- Espaciado reducido -->
+        <h1 style="font-size: 1.2rem; margin: 2px 0;">¡Festival Navideño 2024!</h1> <!-- Márgenes más pequeños -->
+        <p style="font-size: 0.9rem; margin: 2px 0;">Feliz Navidad, vive la magia y comparte la alegría.</p> <!-- Compactación adicional -->
+    </header>
+
+    <!-- Galería Navideña -->
+    <section class="section slide-up" id="gallery" data-aos="fade-up" data-aos-duration="1000">
+        <h2>Galería Navideña</h2>
+        <div class="gallery">
+            <img src="IMG_6823.jpg" alt="Galería 1">
+            <img src="imagen_festival.jpg" alt="Galería 2">
+        </div>
+    </section>
+
+    <!-- Detalles del Evento -->
+    <section class="section fade-in" id="details" data-aos="fade-up" data-aos-duration="1000">
+        <h2>Detalles del Evento</h2>
+        <div class="info-card">
+            <p><strong>Fecha:</strong> 13 de diciembre, 2024</p>
+            <p><strong>Hora:</strong> 03:00 PM - Kinder | 05:00 PM - Primaria</p>
+            <p><strong>Lugar:</strong> Centro de Desarrollo Comunitario #25, DIF Guadalajara, Avenida Patria, El Sauz, Guadalajara, Jalisco, México</p>
+            
+            <!-- Imagen del mapa y enlace -->
+            <div class="map-container" style="text-align: center; margin-top: 15px;">
+                <!-- Imagen del mapa -->
+                <a href="https://maps.app.goo.gl/Q6nx3twiyeCMZEDT9?g_st=com.google.maps.preview.copy" target="_blank">
+                    <img
+                        src="mapa-ubicacion.png"
+                        alt="Mapa de ubicación"
+                        style="border-radius: 10px; cursor: pointer; width: 200px; height: auto; display: inline-block;">
+                </a>
+                <!-- Enlace rojo debajo -->
+                <a href="https://maps.app.goo.gl/Q6nx3twiyeCMZEDT9?g_st=com.google.maps.preview.copy" target="_blank" style="color: red; text-decoration: underline; font-weight: bold; display: block; margin-top: 10px;">
+                    Abrir en Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acceso al Festival -->
+    <section class="section" id="access" data-aos="fade-right" data-aos-duration="1000">
+        <h2>Acceso al Festival</h2>
+        <div class="access-box">
+            <div class="step">
+                <div class="step-number">1</div>
+                <p><strong>Recibe tus boletos:</strong><br> Dos por alumno. Boletos extras en el colegio.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <p><strong>Guarda tus boletos:</strong><br> Consérvalos y llévalos al evento.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <p><strong>Preséntalos en la entrada:</strong><br> Muestra tus boletos válidos para ingresar.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contador Navideño -->
+    <section class="section fade-in" id="countdown" data-aos="zoom-in" data-aos-duration="1000">
+        <h2 class="countdown-title">Cuenta Regresiva para el Festival</h2>
+        <div class="countdown-box">
+            <div id="timer" class="timer-flex">
+                <div class="time-unit">
+                    <span id="days">00</span>
+                    <p>Días</p>
+                </div>
+                <div class="time-unit">
+                    <span id="hours">00</span>
+                    <p>Horas</p>
+                </div>
+                <div class="time-unit">
+                    <span id="minutes">00</span>
+                    <p>Minutos</p>
+                </div>
+                <div class="time-unit">
+                    <span id="seconds">00</span>
+                    <p>Segundos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer sin animación -->
+    <footer class="footer no-animation">
+        <p>¡Te esperamos con mucha alegría en el Festival Navideño!</p>
+    </footer>
+
+    <!-- Librería AOS para animaciones -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar AOS
+        AOS.init();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
