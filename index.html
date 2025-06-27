@@ -1,155 +1,334 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOCAL HOST</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Librería AOS para animaciones -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boleto VIP - Festival Río 2025</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Playfair+Display:wght@700&display=swap');
 
-    <!-- Metaetiquetas para compartir en redes sociales -->
-    <meta property="og:title" content="Invitación al Festival Navideño 🎄">
-    <meta property="og:description" content="¡Acompáñanos al Festival Navideño del Colegio Tlahtoani! Haz clic aquí para más detalles y confirmar tu asistencia.">
-    <meta property="og:image" content="https://i.postimg.cc/QtmFPrP6/imagen-etiqueta.png">
-    <meta property="og:url" content="https://colegiotlahtoani.github.io/invitacion-navidad/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
+    :root {
+      --primary: #6a11cb;
+      --secondary: #2575fc;
+      --gold: #FFD700;
+      --silver: #C0C0C0;
+    }
 
-    <style>
-        /* Ajuste de texto consistente entre dispositivos */
-        html {
-            font-size: 16px; /* Tamaño base uniforme */
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-size: 1rem; /* Relativo al tamaño base */
-            -webkit-text-size-adjust: 100%; /* Para iOS */
-            text-size-adjust: 100%; /* Para otros navegadores */
-        }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      padding: 20px;
+    }
 
-        h1, h2, h3, h4, h5, h6 {
-            margin: 0;
-            line-height: 1.2;
-        }
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-        /* Escalado opcional para pantallas pequeñas */
-        @media (max-width: 768px) {
-            html {
-                font-size: 16px; /* Mantén el tamaño base en pantallas medianas */
-            }
-        }
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+    }
 
-        @media (max-width: 480px) {
-            html {
-                font-size: 16px; /* Igual para pantallas pequeñas */
-            }
-        }
-    </style>
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .ticket-card {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      padding: 25px;
+      color: white;
+      z-index: 1;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .ticket-card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      bottom: -1px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary), var(--gold));
+      z-index: -2;
+      border-radius: 21px;
+      background-size: 400%;
+      opacity: 0.5;
+    }
+
+    .ticket-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .festival-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #FFD700, #FFFFFF);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .ticket-type {
+      display: inline-block;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      padding: 5px 12px;
+      border-radius: 18px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 3px 10px rgba(106, 17, 203, 0.3);
+    }
+
+    .ticket-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .ticket-id {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      background: linear-gradient(to right, #FFFFFF, #FFD700);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-align: center;
+      word-break: break-all;
+      padding: 0 10px;
+      text-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+      margin: 10px 0;
+    }
+
+    .ticket-id::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+
+    .qr-container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 12px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .qr-code {
+      width: 150px;
+      height: 150px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: white;
+      display: block;
+    }
+
+    .ticket-footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
+    .event-date {
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .location-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: rgba(255, 215, 0, 0.6);
+      font-weight: 600;
+      transition: all 0.3s ease;
+      padding: 4px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .location-link:hover {
+      color: white;
+      text-decoration-color: var(--gold);
+      background: rgba(255, 215, 0, 0.2);
+      text-decoration-thickness: 2px;
+    }
+
+    .location-link i {
+      font-size: 1rem;
+    }
+
+    .vip-stamp {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--gold), #daa520);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transform: rotate(15deg);
+      box-shadow: 0 3px 15px rgba(218, 165, 32, 0.5);
+      z-index: 2;
+      border: 2px solid rgba(255, 215, 0, 0.7);
+    }
+
+    @media (hover: hover) {
+      .ticket-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(106, 17, 203, 0.5);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .ticket-card {
+        padding: 30px;
+        max-width: 420px;
+      }
+      
+      .festival-name {
+        font-size: 2rem;
+      }
+      
+      .ticket-id {
+        font-size: 3.5rem;
+        letter-spacing: 4px;
+      }
+      
+      .qr-code {
+        width: 180px;
+        height: 180px;
+      }
+      
+      .vip-stamp {
+        width: 80px;
+        height: 80px;
+        top: -20px;
+        right: -20px;
+      }
+
+      .location-link {
+        font-size: 0.9rem;
+        gap: 8px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header class="hero fade-in" 
-        data-aos="fade-down" 
-        data-aos-duration="1000"
-        style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px 5px; text-align: center;">
-        <img src="logo_festival.png" alt="Logo Tlahtoani" class="logo" style="width: 200px; margin-bottom: 2px;"> <!-- Espaciado reducido -->
-        <h1 style="font-size: 1.2rem; margin: 2px 0;">¡Festival Navideño 2024!</h1> <!-- Márgenes más pequeños -->
-        <p style="font-size: 0.9rem; margin: 2px 0;">Feliz Navidad, vive la magia y comparte la alegría.</p> <!-- Compactación adicional -->
-    </header>
+  <div class="particles" id="particles"></div>
 
-<!-- Galería Navideña -->
-<section class="section slide-up" id="gallery" data-aos="fade-up" data-aos-duration="1000">
-    <h2>Galería Navideña</h2>
-    <div class="gallery">
-        <img src="IMG_6823.jpg" alt="Galería 1">
-        <!-- Reemplazo por la nueva imagen -->
-        <img src="IMG_6875.jpg" alt="Galería 2" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-          <img src="IMG_6916.jpg" alt="Galería 3" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+  <div class="ticket-card">
+    <div class="vip-stamp">VIP</div>
+    
+    <div class="ticket-header">
+      <h1 class="festival-name">Festival Río 2025</h1>
+      <div class="ticket-type">COLEGIO TLAHTOANI</div>
     </div>
-</section>
+    
+    <div class="ticket-body">
+      <div class="ticket-id" id="ticketId">1q2</div>
+      
+      <div class="qr-container">
+        <img id="qrCode" class="qr-code" alt="Código QR del boleto">
+      </div>
+    </div>
+    
+    <div class="ticket-footer">
+      <div class="event-date">18 DE JULIO 2025</div>
+      <a href="https://maps.app.goo.gl/SreDoKViYSB48zz86" class="location-link" target="_blank" rel="noopener noreferrer" aria-label="Ver ubicación en Google Maps">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>VER UBICACIÓN EN MAPAS</span>
+      </a>
+    </div>
+  </div>
 
+  <script>
+    // Configuración con ID fijo
+    const ticketId = "1q2"; // ID especificado
+    const qrLink = "https://colegiotlahtoani.github.io/invitacion-festival/"; // Nuevo enlace para el QR
+    
+    document.getElementById('ticketId').textContent = ticketId;
+    
+    // Generar QR con el nuevo enlace
+    document.getElementById('qrCode').src = 
+      `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrLink)}&bgcolor=1a1a2e&color=FFD700`;
 
+    // Partículas de fondo
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = window.innerWidth < 768 ? 15 : 25;
 
-    <!-- Detalles del Evento -->
-    <section class="section fade-in" id="details" data-aos="fade-up" data-aos-duration="1000">
-        <h2>Detalles del Evento</h2>
-        <div class="info-card">
-            <p><strong>Fecha:</strong> 13 de diciembre, 2024</p>
-            <p><strong>Hora:</strong> 03:00 PM - Kinder | 05:30 PM - Primaria</p>
-            <p><strong>Lugar:</strong> Centro de Desarrollo Comunitario #25, DIF Guadalajara, Avenida Patria, El Sauz, Guadalajara, Jalisco, México</p>
-            
-            <!-- Imagen del mapa y enlace -->
-            <div class="map-container" style="text-align: center; margin-top: 15px;">
-                <!-- Imagen del mapa -->
-                <a href="https://maps.app.goo.gl/Q6nx3twiyeCMZEDT9?g_st=com.google.maps.preview.copy" target="_blank">
-                    <img
-                        src="mapa-ubicacion.png"
-                        alt="Mapa de ubicación"
-                        style="border-radius: 10px; cursor: pointer; width: 200px; height: auto; display: inline-block;">
-                </a>
-                <!-- Enlace rojo debajo -->
-                <a href="https://maps.app.goo.gl/Q6nx3twiyeCMZEDT9?g_st=com.google.maps.preview.copy" target="_blank" style="color: red; text-decoration: underline; font-weight: bold; display: block; margin-top: 10px;">
-                    Abrir en Google Maps
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Acceso al Festival -->
-    <section class="section" id="access" data-aos="fade-right" data-aos-duration="1000">
-        <h2>Acceso al Festival</h2>
-        <div class="access-box">
-            <div class="step">
-                <div class="step-number">1</div>
-                <p><strong>Recibe tus boletos:</strong><br> Serán entregados en el colegio. Boletos extra: $120.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <p><strong>Guarda tus boletos:</strong><br> Consérvalos y llévalos al evento.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <p><strong>Preséntalos en la entrada:</strong><br> Muestra tus boletos válidos para ingresar.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contador Navideño -->
-    <section class="section fade-in" id="countdown" data-aos="zoom-in" data-aos-duration="1000">
-        <h2 class="countdown-title">Cuenta Regresiva para el Festival</h2>
-        <div class="countdown-box">
-            <div id="timer" class="timer-flex">
-                <div class="time-unit">
-                    <span id="days">00</span>
-                    <p>Días</p>
-                </div>
-                <div class="time-unit">
-                    <span id="hours">00</span>
-                    <p>Horas</p>
-                </div>
-                <div class="time-unit">
-                    <span id="minutes">00</span>
-                    <p>Minutos</p>
-                </div>
-                <div class="time-unit">
-                    <span id="seconds">00</span>
-                    <p>Segundos</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer sin animación -->
-    <footer class="footer no-animation">
-        <p>¡Te esperamos con mucha alegría en el Festival Navideño!</p>
-    </footer>
-
-    <!-- Librería AOS para animaciones -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Inicializar AOS
-        AOS.init();
-    </script>
-    <script src="script.js"></script>
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.top = Math.random() * 100 + 'vh';
+      particle.style.width = (Math.random() * 3 + 1) + 'px';
+      particle.style.height = particle.style.width;
+      
+      particle.style.opacity = Math.random() * 0.3 + 0.1;
+      particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+      particle.style.animationDelay = (Math.random() * 5) + 's';
+      
+      particlesContainer.appendChild(particle);
+    }
+  </script>
 </body>
 </html>
